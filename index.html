@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gallery List Creator</title>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/fantasque-sans-mono" type="text/css">
+    <link rel="stylesheet" href="./static/terminal.css">
+    <link rel="stylesheet" href="./static/gallery.css">
+    <script src="./static/gallery.js" defer></script>
+</head>
+<body>
+    <main>
+        <header>
+            <p class="eyebrow">ILL.FARM / UTILITIES</p>
+            <h1>Gallery list creator</h1>
+            <p>Select images, add descriptions, and download your HTML list.</p>
+        </header>
+        <section aria-label="Image selection" class="panel">
+            <label for="images">01 / Select images</label>
+            <input type="file" id="images" name="images" accept="image/*" multiple>
+            <p class="hint">Images stay on your device. Each selection replaces the current list.</p>
+            <label for="base-path">02 / Set path</label>
+            <input type="text" id="base-path" placeholder="/home/you/Pictures/" spellcheck="false" aria-describedby="path-help path-error">
+            <p id="path-help" class="hint">Set the path for the images, whether local for inclusion in SSG, or web target.</p>
+            <p id="path-error" class="error" role="status"></p>
+            <label class="check"><input type="checkbox" id="lazy" checked> Add loading="lazy" to every image</label>
+        </section>
+        <section aria-labelledby="list-heading">
+            <div class="section-heading"><h2 id="list-heading">03 / Image list</h2><span id="count" aria-live="polite">0 images</span></div>
+            <p id="empty" class="empty">Your selected images will appear here.</p>
+            <ul id="image-list" class="image-list"></ul>
+        </section>
+        <section aria-labelledby="output-heading">
+            <div class="section-heading"><h2 id="output-heading">04 / HTML output</h2><button id="download" type="button" disabled>Download list.html</button></div>
+            <p class="hint">Downloads a &lt;ul&gt; fragment with one &lt;li&gt; and &lt;img&gt; per image. Image files are not included.</p>
+            <pre><code id="output">&lt;ul&gt;
+&lt;/ul&gt;</code></pre>
+            <p id="status" role="status" class="hint"></p>
+        </section>
+    </main>
+    <footer>Derived from the <a href="https://github.com/panr/hugo-theme-terminal" target="_blank" rel="noopener noreferrer">Terminal</a> theme. CSS source on <a href="https://github.com/panr/terminal-css/" target="_blank" rel="noopener noreferrer">GitHub</a>.</footer>
+</body>
+</html>
